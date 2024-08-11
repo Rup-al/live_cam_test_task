@@ -15,9 +15,9 @@ This is a React application that allows users to view shared camera on Angelcam 
 1. Clone the repository:
    ```bash
    git clone https://github.com/Rup-al/live_cam_test_task.git
-   cd live-camera-app
+   cd live_cam_test_task
 
-## Frontend -----------------------------------------------------------------------------------
+## Frontend -------------------------
 
 ## Frontend Technologies
 - ReactJS
@@ -25,7 +25,7 @@ This is a React application that allows users to view shared camera on Angelcam 
 
 ## For Frontend Steup and Run
 
-   - cd live-camera-app/frontend/livecam
+   - cd live_cam_test_task/frontend/livecam
    - and run npm install
    - and run npm start
 
@@ -34,13 +34,13 @@ This is a React application that allows users to view shared camera on Angelcam 
    http://localhost:3000    
 
 ## For Frontend changes in .env file
-   - cd live-camera-app/frontend/livecam
+   - cd live_cam_test_task/frontend/livecam
      edit .env file
 
    - REACT_APP_PERSONAL_ACCESS_TOKEN=angelcam personal access token
    - REACT_APP_API_URL=http://127.0.0.1:8000/api
 
-## Backend -----------------------------------------------------------------------------------
+## Backend -------------------------
 
 ## Backend Prerequisites
    - Python 3.x
@@ -54,7 +54,7 @@ This is a React application that allows users to view shared camera on Angelcam 
 
 ## For Backend Steup and Run
 
-   - cd live-camera-app/backend_api/api
+   - cd live_cam_test_task/backend_api/api
    - and run pip install -r requirements.txt
    - and run python3 manage.py migrate
    - and run python3 manage.py createsuperuser
@@ -65,7 +65,7 @@ This is a React application that allows users to view shared camera on Angelcam 
    http://127.0.0.1:8000   
 
 ## For Backend changes in .env for
-   - cd live-camera-app/backend_api/api
+   - cd live_cam_test_task/backend_api/api
      edit .env file
 
    - DATABASE_NAME=mydatabase
