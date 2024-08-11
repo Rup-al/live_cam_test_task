@@ -43,21 +43,24 @@ This is a React application that allows users to view shared camera on Angelcam 
    - REACT_APP_PERSONAL_ACCESS_TOKEN=angelcam personal access token
    - REACT_APP_API_URL=http://127.0.0.1:8000/api
 
-## Backend -------------------------
+## Backend-------------------------
 
 ## Backend Prerequisites
    - Python 3.x
    - Django 3.x or 4.x
    - Pip
+   - MongoDB server and client
 
 ## Backend Technologies
    - Python
    - Django
    - MongoDB
 
-## For Backend Steup and Run
+## For Backend (For Ubuntu supported) Steup and Run
 
    - cd live_cam_test_task/backend/backend_api/api
+   - and run "python -m venv venv"
+   - and run "source venv/bin/activate"
    - and run "pip install -r requirements.txt"
    - and run "python3 manage.py migrate"
    - and run "python3 manage.py createsuperuser"
