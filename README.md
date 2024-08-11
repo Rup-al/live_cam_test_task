@@ -84,5 +84,8 @@ This is a React application that allows users to view shared camera on Angelcam 
    - DEFAULT_FROM_EMAIL="email id"
 
 
+## API postman collection link
+   - https://restless-equinox-833619.postman.co/workspace/New-Team-Workspace~9e1dfe90-8439-40d5-a10a-c68664c96c47/collection/34258907-7c3fa9e5-6cff-4791-9954-e0d5e5ccac53?action=share&creator=34258907
+
   
   
