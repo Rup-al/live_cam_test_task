@@ -25,57 +25,57 @@ This is a React application that allows users to view shared camera on Angelcam 
 
 ## For Frontend Steup and Run
 
-   cd live-camera-app/frontend/livecam
-   and run npm install
-   and run npm start
+   - cd live-camera-app/frontend/livecam
+   - and run npm install
+   - and run npm start
 
 ## For access React (Frontend) server
    
    http://localhost:3000    
 
 ## For Frontend changes in .env file
-   cd live-camera-app/frontend/livecam
-   edit .env file
+   - cd live-camera-app/frontend/livecam
+     edit .env file
 
-   REACT_APP_PERSONAL_ACCESS_TOKEN=angelcam personal access token
-   REACT_APP_API_URL=http://127.0.0.1:8000/api
+   - REACT_APP_PERSONAL_ACCESS_TOKEN=angelcam personal access token
+   - REACT_APP_API_URL=http://127.0.0.1:8000/api
 
 ## Backend -----------------------------------------------------------------------------------
 
 ## Backend Prerequisites
-   Python 3.x
-   Django 3.x or 4.x
-   Pip
+   - Python 3.x
+   - Django 3.x or 4.x
+   - Pip
 
 ## Backend Technologies
-- Python
-- Django
-- MongoDB
+   - Python
+   - Django
+   - MongoDB
 
 ## For Backend Steup and Run
 
-   cd live-camera-app/backend_api/api
-   and run pip install -r requirements.txt
-   and run python3 manage.py migrate
-   and run python3 manage.py createsuperuser
-   and run python3 manage.py runserver
+   - cd live-camera-app/backend_api/api
+   - and run pip install -r requirements.txt
+   - and run python3 manage.py migrate
+   - and run python3 manage.py createsuperuser
+   - and run python3 manage.py runserver
 
 ## For access Django (Backend) server
    
    http://127.0.0.1:8000   
 
 ## For Backend changes in .env for
-   cd live-camera-app/backend_api/api
-   edit .env file
+   - cd live-camera-app/backend_api/api
+     edit .env file
 
-   DATABASE_NAME=mydatabase
-   APP_PERSONAL_ACCESS_TOKEN=angelcam personal access token
-   CLIENT_ID=client id
-   APP_GET_ALL_SHARED_CAMERAS_API=https://api.angelcam.com/v1/shared-cameras/
-   APP_GET_ANGELCAM_USER_AUTH_API=https://my.angelcam.com/oauth/token/
-   EMAIL_HOST_USER="email id"
-   EMAIL_HOST_PASSWORD="password"
-   DEFAULT_FROM_EMAIL="email id"
+   - DATABASE_NAME=mydatabase
+   - APP_PERSONAL_ACCESS_TOKEN=angelcam personal access token
+   - CLIENT_ID=client id
+   - APP_GET_ALL_SHARED_CAMERAS_API=https://api.angelcam.com/v1/shared-cameras/
+   - APP_GET_ANGELCAM_USER_AUTH_API=https://my.angelcam.com/oauth/token/
+   - EMAIL_HOST_USER="email id"
+   - EMAIL_HOST_PASSWORD="password"
+   - DEFAULT_FROM_EMAIL="email id"
 
 
   
