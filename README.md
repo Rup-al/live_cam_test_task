@@ -19,6 +19,9 @@ This is a React application that allows users to view shared camera on Angelcam 
 
 ## Frontend -------------------------
 
+## Frontend Prerequisites
+   - npm
+
 ## Frontend Technologies
 - ReactJS
 - Material UI 5   
@@ -26,8 +29,8 @@ This is a React application that allows users to view shared camera on Angelcam 
 ## For Frontend Steup and Run
 
    - cd live_cam_test_task/frontend/livecam
-   - and run npm install
-   - and run npm start
+   - and run "npm install"
+   - and run "npm start"
 
 ## For access React (Frontend) server
    
