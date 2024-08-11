@@ -1,32 +1,3 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
 # Live Cam App
 
 ## Overview
@@ -38,17 +9,74 @@ This is a React application that allows users to view shared camera on Angelcam 
 - **Shared Camera List Page** : Users can view all live and snapshot videos from shared cameras linked to their Personal Access Token.
 - **Shared Camera Recorded Video Page** : Users can click on any shared video to view recorded footage by entering the start and end date/time.
 
-## Frontend Technologies
-- ReactJS
-- Material UI 5
 
-## Frontend Technologies
-- Python
-- Django
-- MongoDB
 
 ## Setup
 1. Clone the repository:
    ```bash
    git clone https://github.com/Rup-al/live_cam_test_task.git
    cd live-camera-app
+
+## Frontend -----------------------------------------------------------------------------------
+
+## Frontend Technologies
+- ReactJS
+- Material UI 5   
+
+## For Frontend Steup and Run
+
+   cd live-camera-app/frontend/livecam
+   and run npm install
+   and run npm start
+
+## For access React (Frontend) server
+   
+   http://localhost:3000    
+
+## For Frontend changes in .env file
+   cd live-camera-app/frontend/livecam
+   edit .env file
+
+   REACT_APP_PERSONAL_ACCESS_TOKEN=angelcam personal access token
+   REACT_APP_API_URL=http://127.0.0.1:8000/api
+
+## Backend -----------------------------------------------------------------------------------
+
+## Backend Prerequisites
+   Python 3.x
+   Django 3.x or 4.x
+   Pip
+
+## Backend Technologies
+- Python
+- Django
+- MongoDB
+
+## For Backend Steup and Run
+
+   cd live-camera-app/backend_api/api
+   and run pip install -r requirements.txt
+   and run python3 manage.py migrate
+   and run python3 manage.py createsuperuser
+   and run python3 manage.py runserver
+
+## For access Django (Backend) server
+   
+   http://127.0.0.1:8000   
+
+## For Backend changes in .env for
+   cd live-camera-app/backend_api/api
+   edit .env file
+
+   DATABASE_NAME=mydatabase
+   APP_PERSONAL_ACCESS_TOKEN=angelcam personal access token
+   CLIENT_ID=client id
+   APP_GET_ALL_SHARED_CAMERAS_API=https://api.angelcam.com/v1/shared-cameras/
+   APP_GET_ANGELCAM_USER_AUTH_API=https://my.angelcam.com/oauth/token/
+   EMAIL_HOST_USER="email id"
+   EMAIL_HOST_PASSWORD="password"
+   DEFAULT_FROM_EMAIL="email id"
+
+
+  
+  

@@ -124,7 +124,6 @@ const ForgotPassword = () => {
       >
         {isSubmitted ? (
           <Box sx={{ textAlign: 'center' }}>
-            {/* <CheckCircleIcon color="success" sx={{ fontSize: 50, mb: 2 }} /> */}
             <Typography variant="h5" gutterBottom>
               Success!
             </Typography>
