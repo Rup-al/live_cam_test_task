@@ -8,9 +8,21 @@ from .serializers import RegisterSerializer, LoginSerializer
 from rest_framework.permissions import IsAuthenticated
 from .models import InvalidatedToken
 from django.http import JsonResponse
+from django.contrib.auth.hashers import make_password
+from django.urls import reverse
+from django.conf import settings
+from .models import InvalidatedToken
+from django.core.mail import send_mail
+import jwt
 import requests
 from dateutil import parser
 import environ
+from rest_framework import serializers
+from django.contrib.auth.tokens import default_token_generator
+from rest_framework_simplejwt.tokens import UntypedToken
+from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+from django.utils.http import urlsafe_base64_decode
+from django.utils.encoding import force_str
 
 env = environ.Env()
 environ.Env.read_env()
@@ -38,7 +50,6 @@ class LoginView(generics.GenericAPIView):
             refresh = RefreshToken.for_user(user)
             access_token = refresh.access_token
             
-            # Add custom claims
             access_token['username'] = user.username
             access_token['email'] = user.email
 
@@ -101,7 +112,6 @@ class AngelcamTokenView(generics.GenericAPIView):
 
  
 class RecordingControlView(generics.GenericAPIView):
-    #permission_classes = [IsAuthenticated]
     permission_classes = [AllowAny]
 
     def post(self, request, *args, **kwargs):
@@ -110,7 +120,6 @@ class RecordingControlView(generics.GenericAPIView):
         recording_id = request.data.get("recording_id")
         start = request.data.get("start")
         cleaned_start = start.strip('"')
-        print(cleaned_start)
 
 
         if not recording_id:
@@ -118,7 +127,6 @@ class RecordingControlView(generics.GenericAPIView):
         apiUrl = env('APP_GET_ALL_SHARED_CAMERAS_API', default='default_get_all_shared_cameras_api')
         base_url = f"{apiUrl}{recording_id}/recording/stream/?start={cleaned_start}"
 
-        print(base_url)
         actions = {
             "play": f"{base_url}play/",
             "pause": f"{base_url}pause/",
@@ -142,3 +150,68 @@ class RecordingControlView(generics.GenericAPIView):
         response = requests.get(base_url , headers=headers)
 
         return JsonResponse(response.json(), status=response.status_code) 
+
+class ForgotPasswordView(generics.GenericAPIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        email = request.data.get('email')
+        try:
+            user = User.objects.get(email=email)
+            refresh = RefreshToken.for_user(user)
+            token = str(refresh.access_token)
+
+            reset_url = "http://localhost:3000/reset-password-confirm" + f"?token={token}"
+            
+
+            send_mail(
+                'Password Reset Request',
+                f'Click the link to reset your password: {reset_url}',
+                settings.DEFAULT_FROM_EMAIL,
+                [email],
+            )
+
+            return Response({"detail": "Password reset email sent."}, status=status.HTTP_200_OK)
+
+        except User.DoesNotExist:
+            return Response({"detail": "User with this email does not exist."}, status=status.HTTP_400_BAD_REQUEST)      
+
+
+class PasswordResetConfirmView(generics.GenericAPIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        token = request.data.get('token')
+        password = request.data.get('password')
+
+
+        if not token or not password:
+            return Response({'error': 'Token and password are required.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+
+            user_id = payload.get('user_id')
+            user = User.objects.get(pk=user_id)
+        except jwt.ExpiredSignatureError as e:
+            return Response({'error': 'Token has expired.'}, status=status.HTTP_400_BAD_REQUEST)
+        except jwt.DecodeError as e:
+            return Response({'error': 'Invalid token.'}, status=status.HTTP_400_BAD_REQUEST)
+        except User.DoesNotExist as e:
+            return Response({'error': 'User does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
+        user.set_password(password)
+        user.save()
+
+        return Response({'success': 'Password has been reset successfully.'}, status=status.HTTP_200_OK)
+
+
+class ValidateResetTokenView(generics.GenericAPIView):
+    def post(self, request):
+        token = request.data.get('token')
+
+        try:
+            
+            UntypedToken(token)
+            return Response({'valid': True}, status=status.HTTP_200_OK)
+        except (InvalidToken, TokenError):
+            return Response({'valid': False}, status=status.HTTP_400_BAD_REQUEST)

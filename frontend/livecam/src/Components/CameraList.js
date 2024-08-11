@@ -54,7 +54,6 @@ const CameraList = () => {
           localStorage.removeItem('token');
           navigate('/');
         } else {
-          console.error('There was an error fetching the cameras!', error);
           navigate('/');
         }
       } finally {
@@ -117,7 +116,6 @@ const CameraList = () => {
       start: startDate,
       end: endDate
     };
-    console.log(body);
     if(startDate > endDate){
       setSnackbarMessage('End date should be greater than start date');
       setSnackbarSeverity('error');
@@ -127,17 +125,13 @@ const CameraList = () => {
     try {
       const apiUrl = `${process.env.REACT_APP_API_URL}/recording/control/`;
       const response = await axios.post(apiUrl, body, {
-        headers: {
-          //Authorization: `PersonalAccessToken ${process.env.REACT_APP_PERSONAL_ACCESS_TOKEN}`,
-        },
+        headers: {},
       });
-      console.log(response);
       navigate('/show-recording', { state: { apiResponse: response.data } });
     } catch (error) {
       setSnackbarMessage('Recording not found !!!');
       setSnackbarSeverity('error');
       setOpenSnackbar(true);
-      console.error('There was an error fetching the recording!', error);
     } finally {
       setOpenDialog(false);
       setLoadingData(false);

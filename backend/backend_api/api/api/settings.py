@@ -29,11 +29,11 @@ from datetime import timedelta
 import environ
 
 
-# Basic settings
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 env = environ.Env()
-env_file = os.path.join(BASE_DIR, '.env')  # Ensure BASE_DIR is correctly defined
+env_file = os.path.join(BASE_DIR, '.env')  
 environ.Env.read_env(env_file)
 
 SECRET_KEY = 'your-secret-key'
@@ -41,7 +41,7 @@ DEBUG = True
 CORS_ALLOW_ALL_ORIGINS = True
 ALLOWED_HOSTS = []
 
-# Installed apps
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'myapp'
 ]
 
-# Middleware
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -67,10 +67,10 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-# URL configuration
+
 ROOT_URLCONF = 'api.urls'
 
-# Templates
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -87,10 +87,10 @@ TEMPLATES = [
     },
 ]
 
-# WSGI application
+
 WSGI_APPLICATION = 'api.wsgi.application'
 
-# Database configuration
+
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
@@ -98,7 +98,7 @@ DATABASES = {
     }
 }
 
-# Password validation
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -114,14 +114,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# JWT settings
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
 
-# Simple JWT settings
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
@@ -138,9 +138,17 @@ SIMPLE_JWT = {
 }
 
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')  
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD') 
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL') 
 
-# Static files
+
+
 STATIC_URL = '/static/'
 
-# Default primary key field type
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

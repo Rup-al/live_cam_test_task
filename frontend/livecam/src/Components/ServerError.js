@@ -7,7 +7,6 @@ const ServerError = () => {
   const navigate = useNavigate();
 
   const handleRetry = () => {
-    // Logic to retry the action, e.g., reload the page
     window.location.reload();
   };
 

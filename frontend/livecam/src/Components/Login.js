@@ -46,7 +46,6 @@ const Login = () => {
         username,
         password,
       });
-      //setToken(response.data.access);
       localStorage.setItem('token', response.data.access);
       localStorage.setItem('ref_token', response.data.refresh);
       setSnackbarMessage('Login successful!');
@@ -60,7 +59,6 @@ const Login = () => {
       setSnackbarMessage('Incorrect credentials, please try again.');
       setSnackbarSeverity('error');
       setOpenSnackbar(true);
-      console.error("There was an error logging in!", error);
     }
   };
 
@@ -87,6 +85,10 @@ const Login = () => {
       setPasswordError('');
     }
   };
+  const handleForgotPassword = () =>{
+    navigate('/forgot-password')
+
+  } 
 
   return (
     <>
@@ -179,7 +181,7 @@ const Login = () => {
             </Stack>
           </form>
           <Stack spacing={1} sx={{ marginTop: 2, width: '100%' }} alignItems="center">
-            <Link href="/forgot-password" variant="body2" sx={{ cursor: 'pointer' }}>
+            <Link onClick={handleForgotPassword} variant="body2" sx={{ cursor: 'pointer' }}>
               Forgot Password?
             </Link>
             <Link onClick={handleRegisterRedirect} variant="body2" sx={{ cursor: 'pointer' }}>
@@ -189,7 +191,7 @@ const Login = () => {
         </Paper>
       </Container>
 
-      {/* Snackbar positioned outside of the Paper */}
+     
       <Snackbar
         open={openSnackbar}
         autoHideDuration={6000}

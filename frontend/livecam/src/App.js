@@ -7,6 +7,8 @@ import Register from './Components/Register';
 import NavBar from './Components/Navbar';
 import ServerError from './Components/ServerError';
 import ShowRecordingPage from './Components/ShowRecordingPage';
+import ForgotPassword from './Components/ForgotPassword';
+import PasswordResetForm from './Components/PasswordResetForm'
 
 const Layout = ({ username }) => {
   const location = useLocation();
@@ -32,6 +34,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password-confirm" element={<PasswordResetForm/>} />
         <Route path="/server-error" element={<ServerError />} />
         <Route path="*" element={<Layout />} />
       </Routes>

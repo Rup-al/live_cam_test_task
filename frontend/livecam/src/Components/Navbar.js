@@ -28,7 +28,6 @@ const NavBar = () => {
           tokenId: decodedToken.tokenId,
         });
       } catch (error) {
-        console.error('Invalid token:', error);
         localStorage.removeItem('token');
         navigate('/');
       }
@@ -55,11 +54,9 @@ const NavBar = () => {
         localStorage.removeItem('refresh_token');
         navigate('/');
       } catch (error) {
-        console.error('Logout failed:', error);
         navigate('/');
       }
     } else {
-      console.error('No refresh token found');
       navigate('/');
     }
   };

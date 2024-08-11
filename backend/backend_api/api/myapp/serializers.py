@@ -6,9 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 class CustomUniqueValidator(UniqueValidator):
     def __call__(self, value, serializer_field):
-        # Determine the field name from the serializer field
         field_name = serializer_field.source_attrs[-1]
-        # Filter the queryset based on the field name and value
         if self.queryset.filter(**{field_name: value}).exists():
             message = _("A user with that email already exists.")
             raise serializers.ValidationError(message)

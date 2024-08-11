@@ -114,10 +114,7 @@ const Register = () => {
       setOpenSnackbar(true);
       setOpenSuccessDialog(true);
     } catch (error) {
-      //console.log(error.response.data.email[0]);
-      console.log("dd")
       if(error.message === "Network Error"){
-        console.log("errrroror")
         navigate('/server-error')
 
       }else{
@@ -130,7 +127,6 @@ const Register = () => {
       }
       setSnackbarSeverity('error');
       setOpenSnackbar(true);
-      console.error("There was an error registering!", error);
       }
     }
   };
@@ -367,7 +363,6 @@ const Register = () => {
         </Stack>
       </Paper>
 
-      {/* Snackbar positioned outside of the Paper */}
       <Snackbar
         open={openSnackbar}
         autoHideDuration={6000}
@@ -388,7 +383,6 @@ const Register = () => {
         </Alert>
       </Snackbar>
 
-      {/* Success dialog */}
       <Dialog
         open={openSuccessDialog}
         onClose={() => {}} 
