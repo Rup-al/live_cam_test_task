@@ -58,10 +58,10 @@ This is a React application that allows users to view shared camera on Angelcam 
 ## For Backend Steup and Run
 
    - cd live_cam_test_task/backend/backend_api/api
-   - and run pip install -r requirements.txt
-   - and run python3 manage.py migrate
-   - and run python3 manage.py createsuperuser
-   - and run python3 manage.py runserver
+   - and run "pip install -r requirements.txt"
+   - and run "python3 manage.py migrate"
+   - and run "python3 manage.py createsuperuser"
+   - and run "python3 manage.py runserver"
 
 ## For access Django (Backend) server
    
