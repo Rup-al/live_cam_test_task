@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import CameraList from './Components/CameraList';
-import VideoDisplay from './Components/VideoDisplay';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import NavBar from './Components/Navbar';
@@ -20,7 +19,6 @@ const Layout = ({ username }) => {
       <Routes>
         <Route path="/cameras" element={<CameraList />} />
         <Route path="show-recording" element={<ShowRecordingPage />} />
-        <Route path="/live/:id" element={<VideoDisplay />} />
       </Routes>
     </>
   );
